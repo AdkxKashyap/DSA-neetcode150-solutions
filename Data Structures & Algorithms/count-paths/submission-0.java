@@ -1,0 +1,14 @@
+class Solution {
+    public int uniquePaths(int m, int n) {
+        int[][] cache = new int[m][n];
+        cache[0][0] = 1;
+
+        for(int i = 0; i < m; i++) {
+            for(int j = 0; j < n; j++) {
+                if(i > 0) cache[i][j] = cache[i-1][j];
+                if(j > 0) cache[i][j] += cache[i][j-1];
+            }
+        }
+        return cache[m-1][n-1];
+    }
+}
